@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Личный кабинет</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Навигация -->
+  <header class="bg-gray-900 text-white p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Магазин</h1>
+    <nav>
+      <a href="index.html" class="hover:text-pink-500 mr-4">Главная</a>
+      <a href="#" onclick="goToAccount()" class="hover:text-pink-500">Личный кабинет</a>
+    </nav>
+  </header>
+
+  <!-- Основной контент -->
+  <main class="max-w-xl mx-auto mt-10 bg-white shadow-md rounded-lg p-6">
+    <h2 class="text-2xl font-bold mb-4">Добро пожаловать!</h2>
+
+    <div class="mb-4">
+      <p><strong>Имя:</strong> <span id="user-name" class="text-blue-600">—</span></p>
+      <p><strong>Email:</strong> <span id="user-email" class="text-blue-600">—</span></p>
+    </div>
+
+    <button onclick="logout()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Выйти</button>
+  </main>
+
+  <!-- Скрипт -->
+  <script>
+    // Проверка входа — если пользователь не авторизован, перенаправляем на страницу входа
+    const currentUser = localStorage.getItem('loggedInUser');
+    if (!currentUser) {
+      window.location.href = 'vxod.html';
+    } else {
+      const user = JSON.parse(currentUser);
+      document.getElementById('user-name').textContent = user.name || '—';
+      document.getElementById('user-email').textContent = user.email || '—';
+    }
+
+    // Функция выхода из аккаунта
+    function logout() {
+      localStorage.removeItem('loggedInUser');
+      window.location.href = 'vxod.html';
+    }
+
+    // Переход по кнопке "Личный кабинет" — в зависимости от входа
+    function goToAccount() {
+      const user = localStorage.getItem("loggedInUser");
+      if (user) {
+        window.location.href = "account.html";
+      } else {
+        window.location.href = "vxod.html";
+      }
+    }
+  </script>
+
+</body>
+</html>
