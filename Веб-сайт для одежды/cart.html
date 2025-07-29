@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Корзина | Gothic Fashion</title>
+  <meta name="description" content="Корзина покупок в магазине готической одежды Gothic Fashion." />
+  <meta name="author" content="Gothic Fashion" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #d4145a, #3a0842);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="text-white">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between p-4 border-b border-gray-700">
+    <h1 class="text-2xl font-bold gradient-text">Gothic Fashion</h1>
+    <nav class="space-x-6 text-sm">
+       <a href="index.html" class="hover:text-pink-500">Главная</a>
+      <a href="catalog.html" class="hover:text-pink-500">Каталог</a>
+      <a href="cart.html" class="hover:text-pink-500">Корзина</a>
+      <a href="account.html" class="hover:text-pink-500">Личный кабинет</a>
+    </nav>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-12">
+
+    <div id="cart-items" class="space-y-6"></div>
+
+    <!-- Итого -->
+    <div id="total-price" class="text-right text-xl font-bold mt-6"></div>
+
+    <!-- Форма оформления заказа -->
+<form id="orderForm" class="mt-10 bg-[#1e1e1e] p-6 rounded-2xl shadow-md space-y-6 hidden">
+  <h3 class="text-2xl font-bold mb-4 text-[#e91e63]">Оформление заказа</h3>
+
+  <input type="text" name="name" placeholder="Ваше имя" required
+         class="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-600">
+
+  <input type="tel" name="phone" placeholder="Номер телефона" required
+         class="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-600">
+
+  <input type="text" name="address" placeholder="Адрес доставки" required
+         class="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-600">
+
+  <textarea name="comments" placeholder="Комментарий к заказу (необязательно)" rows="4"
+            class="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-600"></textarea>
+
+  <input type="hidden" name="cartData" id="cartData">
+
+  <button type="submit"
+          class="bg-[#e91e63] hover:bg-[#c2185b] text-white font-bold py-3 px-6 rounded-xl transition w-full">
+    🛍️ Оформить заказ
+  </button>
+
+  <p id="responseMessage" class="hidden text-green-400 font-semibold text-center">
+    ✅ Заказ успешно отправлен!
+  </p>
+</form>
+
+  </footer>
+
+  <!-- JS -->
+  <script>
+  const cartContainer = document.getElementById('cart-items');
+  const totalPriceEl = document.getElementById('total-price');
+  const orderForm = document.getElementById('orderForm');
+  const cartDataInput = document.getElementById('cartData');
+
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function formatPrice(priceStr) {
+    return parseInt(priceStr.replace(/\D/g, ''));
+  }
+
+  function renderCart() {
+    cartContainer.innerHTML = '';
+    let total = 0;
+
+    if (cart.length === 0) {
+      cartContainer.innerHTML = '<p class="text-gray-400 text-center">Корзина пуста.</p>';
+      totalPriceEl.textContent = '';
+      orderForm.classList.add('hidden');
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      total += formatPrice(item.price);
+
+      const itemEl = document.createElement('div');
+      itemEl.className = 'bg-[#1e1e1e] p-4 rounded-2xl shadow-md flex justify-between items-center';
+
+      itemEl.innerHTML = `
+        <div>
+          <h3 class="text-xl font-semibold">${item.name}</h3>
+          <p class="text-gray-400 text-sm">Размер: ${item.size || '—'} | Кол-во: 1</p>
+        </div>
+        <div class="flex items-center space-x-4">
+          <p class="text-[#e91e63] text-lg font-bold">${item.price}</p>
+          <button onclick="removeItem(${index})" class="text-sm bg-red-600 hover:bg-red-700 px-3 py-1 rounded-xl font-bold transition">Удалить</button>
+        </div>
+      `;
+
+      cartContainer.appendChild(itemEl);
+    });
+
+    totalPriceEl.innerHTML = `Итого: <span class="text-[#e91e63]">${total.toLocaleString('ru-RU')} UZS</span>`;
+    orderForm.classList.remove('hidden');
+
+    cartDataInput.value = cart.map(item =>
+      `${item.name} (Размер: ${item.size || '—'}) — 1 шт. × ${item.price}`
+    ).join('\n');
+  }
+
+  function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  orderForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbx8FE7Y2qgd0ieqeUMH3Co0I7TRW49wAitR7f4IvhcVJa6-x4Rukk6_i4K-t9xgSJzj/exec", {
+        method: 'POST',
+        body: formData
+      });
+
+      document.getElementById('responseMessage').classList.remove('hidden');
+      localStorage.removeItem('cart');
+      cart = [];
+      this.reset();
+      renderCart();
+    } catch (error) {
+      alert("❌ Ошибка при отправке заказа.");
+    }
+  });
+
+  renderCart();
+</script>
+
+</body>
+</html>
