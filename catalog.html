@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Каталог | Redlotus.uz</title>
+  <meta name="description" content="Каталог одежды в магазине Redlotus.uz. Уникальный стиль,индивидуальность." />
+  <meta name="keywords" content="каталог,мода, одежда, Redlotus.uz, Uzbekistan" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Redlotus.uz" />
+  <link rel="canonical" href="https://example.com/catalog" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Каталог | Redlotus.uz" />
+  <meta property="og:description" content="Посмотрите наш каталог готической одежды. Найдите свой уникальный стиль с Redlotus.uz." />
+  <meta property="og:image" content="https://picsum.photos/400/600?random=3" />
+  <meta property="og:url" content="https://example.com/catalog" />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts and Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #d4145a, #3a0842);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="text-white">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between p-4 border-b border-gray-700">
+    <h1 class="text-2xl font-bold gradient-text">Redlotus.uz</h1>
+    <nav class="space-x-6 text-sm flex items-center">
+       <a href="index.html" class="hover:text-pink-500">Главная</a>
+      <a href="catalog.html" class="hover:text-pink-500">Каталог</a>
+      <a href="cart.html" class="hover:text-pink-500">Корзина</a><span id="cart-count" class="text-pink-400 font-bold">(0)</span>
+      </a>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold mb-8 text-center">Каталог</h2>
+
+    <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-6">
+      <div class="bg-[#1e1e1e] p-4 rounded-2xl shadow-md">
+        <img src="https://picsum.photos/300/400?random=1" alt="Товар 1" class="rounded-xl mb-4">
+        <h3 class="text-xl font-semibold mb-2">Черное платье</h3>
+        <p class="text-gray-400 text-sm mb-2">Размеры: S, M, L</p>
+        <p class="text-[#e91e63] text-lg font-bold mb-4">190 000 UZS</p>
+        <button onclick="addToCart('Черное платье', '190 000 UZS', 'S')" class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">В корзину</button>
+      </div>
+      <div class="bg-[#1e1e1e] p-4 rounded-2xl shadow-md">
+        <img src="https://picsum.photos/300/400?random=2" alt="Товар 2" class="rounded-xl mb-4">
+        <h3 class="text-xl font-semibold mb-2">Брюки с цепями</h3>
+        <p class="text-gray-400 text-sm mb-2">Размеры: M, L</p>
+        <p class="text-[#e91e63] text-lg font-bold mb-4">160 000 UZS</p>
+        <button onclick="addToCart('Брюки с цепями', '160 000 UZS', 'M')" class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">В корзину</button>
+      </div>
+      <div class="bg-[#1e1e1e] p-4 rounded-2xl shadow-md">
+        <img src="https://picsum.photos/300/400?random=3" alt="Товар 3" class="rounded-xl mb-4">
+        <h3 class="text-xl font-semibold mb-2">Готический корсет</h3>
+        <p class="text-gray-400 text-sm mb-2">Размеры: XS, S, M</p>
+        <p class="text-[#e91e63] text-lg font-bold mb-4">220 000 UZS</p>
+        <button onclick="addToCart('Готический корсет', '220 000 UZS', 'XS')" class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">В корзину</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#1a1a1a] text-center py-6 mt-12 border-t border-gray-700">
+    <p class="text-sm text-gray-400 mb-4">© 2025 Redlotus.uz. Все права защищены.</p>
+    <div class="flex justify-center space-x-6">
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" class="w-6 h-6" alt="Telegram"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" class="w-6 h-6" alt="Instagram"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-6 h-6" alt="TikTok"></a>
+    </div>
+  </footer>
+
+  <!-- Cart Logic -->
+  <script>
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
+
+    function setCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    function addToCart(name, price, size) {
+      const cart = getCart();
+      const existing = cart.find(item => item.name === name && item.size === size);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, size, quantity: 1 });
+      }
+      setCart(cart);
+      alert(`«${name}» добавлен в корзину`);
+    }
+
+    function updateCartCount() {
+      const cart = getCart();
+      const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cart-count').textContent = `(${total})`;
+    }
+
+    updateCartCount();
+  </script>
+</body>
+</html>
