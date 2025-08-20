@@ -35,23 +35,31 @@
     <div id="cart-items" class="space-y-6"></div>
     <div id="total-price" class="text-right text-xl font-bold mt-6"></div>
 
-    <form id="orderForm" action="https://formsubmit.co/ajax/Danupox365@gmail.com" method="POST" class="mt-10 bg-[#1e1e1e] p-6 rounded-2xl shadow-md space-y-6 hidden">
-  <h3 class="text-2xl font-bold mb-4">Оформление заказа</h3>
+    <!-- Форма заказа -->
+    <form id="orderForm"
+          action="https://formsubmit.co/mariyazinina9@gmail.com" 
+          method="POST"
+          class="mt-10 bg-[#1e1e1e] p-6 rounded-2xl shadow-md space-y-6 hidden">
+      
+      <h3 class="text-2xl font-bold mb-4">Оформление заказа</h3>
 
-  <input type="text" name="name" placeholder="Ваше имя" required class="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-600">
-  <input type="text" name="address" placeholder="Адрес доставки" required class="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-600">
-  <input type="tel" name="phone" placeholder="Номер телефона" required class="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-600">
-  <textarea name="comments" placeholder="Комментарий к заказу (необязательно)" rows="4" class="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-600"></textarea>
+      <input type="text" name="Имя" placeholder="Ваше имя" required class="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-600">
+      <input type="text" name="Адрес доставки" placeholder="Адрес доставки" required class="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-600">
+      <input type="tel" name="Телефон" placeholder="Номер телефона" required class="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-600">
+      <textarea name="Комментарий" placeholder="Комментарий к заказу (обязательно)" rows="4" class="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-600"></textarea>
 
-  <input type="hidden" name="cartData" id="cartData">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
-  <!-- удалено поле _next -->
+      <!-- Скрытое поле с данными корзины -->
+      <input type="hidden" name="Заказанные товары" id="cartData">
 
-  <button type="submit" class="bg-[#e91e63] hover:bg-[#c2185b] text-white font-bold py-3 px-6 rounded-xl transition w-full">Оформить заказ</button>
-  <p id="responseMessage" class="hidden text-green-400 font-semibold text-center">✅ Спасибо, что выбрали нас!</p>
-</form>
+      <!-- FormSubmit настройки -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_autoresponse" value="Спасибо за заказ! Мы свяжемся с вами в ближайшее время.">
 
+      <button type="submit" class="bg-[#e91e63] hover:bg-[#c2185b] text-white font-bold py-3 px-6 rounded-xl transition w-full">Оформить заказ</button>
+
+      <p id="responseMessage" class="hidden text-green-400 font-semibold text-center">✅ Спасибо, что выбрали нас!</p>
+    </form>
   </main>
 
   <script>
@@ -112,8 +120,8 @@
 
     window.removeItem = removeItem;
 
-    orderForm.addEventListener('submit', function (e) {
-      // Для formsubmit просто продолжаем без fetch
+    // Очистка корзины после успешной отправки
+    orderForm.addEventListener('submit', function () {
       localStorage.removeItem('cart');
       cart = [];
       renderCart();
