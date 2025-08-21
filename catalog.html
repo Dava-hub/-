@@ -70,7 +70,7 @@
 </style>
 
 </head>
-<body class="text-white">
+<body class="flex flex-col min-h-screen bg-black text-white">
 
   <!-- Header -->
   <header class="flex items-center justify-between p-4 border-b border-gray-700">
@@ -83,64 +83,60 @@
     </nav>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 py-12">
+  <main class="flex-grow">
     <h2 class="text-3xl font-bold mb-8 text-center">Каталог</h2>
 
-   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+ <!-- Контейнер карточек: 3 в ряд -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+  <!-- ВСТАВЛЕННЫЕ КАРТОЧКИ -->
+
   <!-- Товар 1 -->
- <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
-  <!-- Карусель -->
-  <div class="relative">
-    <div class="carousel" data-index="0">
-      <img src="sumochkaqora.jpg" class="carousel-img rounded-xl mb-4" />
-      <img src="sumochka_ot.jpg" class="carousel-img hidden rounded-xl mb-4" />
-      <img src="sumochka.jpg" class="carousel-img hidden rounded-xl mb-4" />
+  <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
+    <!-- Карусель -->
+    <div class="relative">
+      <div class="carousel" data-index="0">
+        <img src="sumochkaqora.jpg" class="carousel-img rounded-xl mb-4" />
+        <img src="sumochka_ot.jpg" class="carousel-img hidden rounded-xl mb-4" />
+        <img src="sumochka.jpg" class="carousel-img hidden rounded-xl mb-4" />
+      </div>
+      <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
+      <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
     </div>
-    <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
-    <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
+    <h3 class="text-white text-xl font-semibold mb-2">Сумочки</h3>
+    <p class="text-gray-400 text-sm mb-2">Цвет:</p>
+    <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
+      <option value="Чёрный">Чёрный</option>
+      <option value="Красный">Красный</option>
+      <option value="Белый">Белый</option>
+    </select>
+    <p class="text-[#e91e63] text-lg font-bold mb-4">95 000 UZS</p>
+    <button
+      onclick="addToCart(
+        'Сумочки',
+        '95 000 UZS',
+        document.getElementById('size-dress').value,
+        document.getElementById('color-dress').value
+      )"
+      class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
+      В корзину
+    </button>
   </div>
-
-  <h3 class="text-white text-xl font-semibold mb-2">Сумочки</h3>
-
-
-  <!-- Цвет -->
-  <p class="text-gray-400 text-sm mb-2">Цвет:</p>
-  <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-    <option value="Чёрный">Чёрный</option>
-    <option value="Красный">Красный</option>
-    <option value="Белый">Белый</option>
-  </select>
-
-  <p class="text-[#e91e63] text-lg font-bold mb-4">95 000 UZS</p>
-
-  <button
-    onclick="addToCart(
-      'Сумочки',
-      '95 000 UZS',
-      document.getElementById('size-dress').value,
-      document.getElementById('color-dress').value
-    )"
-    class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
-    В корзину
-  </button>
-</div>
 
  <!-- Товар 2 -->
- <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
-  <!-- Карусель -->
-  <div class="relative">
-    <div class="carousel" data-index="0">
-      <img src="polo1.jpg" class="carousel-img rounded-xl mb-4" />
-      <img src="polo2.jpg" class="carousel-img hidden rounded-xl mb-4" />
-      <img src="polo4.jpg" class="carousel-img hidden rounded-xl mb-4" />
+  <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
+    <!-- Карусель -->
+    <div class="relative">
+      <div class="carousel" data-index="0">
+        <img src="polo1.jpg" class="carousel-img rounded-xl mb-4" />
+        <img src="polo2.jpg" class="carousel-img hidden rounded-xl mb-4" />
+        <img src="polo4.jpg" class="carousel-img hidden rounded-xl mb-4" />
+      </div>
+      <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
+      <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
     </div>
-    <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
-    <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
-  </div>
-
-  <h3 class="text-white text-xl font-semibold mb-2">Худи</h3>
-
-  <!-- Размер -->
+    <h3 class="text-white text-xl font-semibold mb-2">Поло</h3>
+    <!-- Размер -->
   <p class="text-gray-400 text-sm mb-2">Размер:</p>
   <select id="size-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
     <option value="S">S</option>
@@ -148,165 +144,145 @@
     <option value="L">L</option>
   </select>
 
-  <!-- Цвет -->
-  <p class="text-gray-400 text-sm mb-2">Цвет:</p>
-  <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-    <option value="Чёрный">Чёрный</option>
-    <option value="Красный">Красный</option>
-    <option value="Белый">Белый</option>
-  </select>
-
-  <p class="text-[#e91e63] text-lg font-bold mb-4">95 000 UZS</p>
-
-  <button
-    onclick="addToCart(
-      'Худи',
-      '95 000 UZS',
-      document.getElementById('size-dress').value,
-      document.getElementById('color-dress').value
-    )"
-    class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
-    В корзину
-  </button>
-</div>
+    <p class="text-gray-400 text-sm mb-2">Цвет:</p>
+    <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
+      <option value="Чёрный">Чёрный</option>
+      <option value="Красный">Красный</option>
+      <option value="Белый">Белый</option>
+    </select>
+    <p class="text-[#e91e63] text-lg font-bold mb-4">95 000 UZS</p>
+    <button
+      onclick="addToCart(
+        'Поло',
+        '95 000 UZS',
+        document.getElementById('size-dress').value,
+        document.getElementById('color-dress').value
+      )"
+      class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
+      В корзину
+    </button>
+  </div>
 <!-- Товар 3 -->
- <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
-  <!-- Карусель -->
-  <div class="relative">
-    <div class="carousel" data-index="0">
-      <img src="topik2.jpg" class="carousel-img rounded-xl mb-4" />
-      <img src="topik.jpg" class="carousel-img hidden rounded-xl mb-4" />
-      <img src="topik3.jpg" class="carousel-img hidden rounded-xl mb-4" />
+  <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
+    <!-- Карусель -->
+    <div class="relative">
+      <div class="carousel" data-index="0">
+        <img src="topik.jpg" class="carousel-img rounded-xl mb-4" />
+        <img src="topik2.jpg" class="carousel-img hidden rounded-xl mb-4" />
+        <img src="topik3.jpg" class="carousel-img hidden rounded-xl mb-4" />
+      </div>
+      <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
+      <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
     </div>
-    <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
-    <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
-  </div>
-
-  <h3 class="text-white text-xl font-semibold mb-2">Топик</h3>
-
-  <!-- Размер -->
+    <h3 class="text-white text-xl font-semibold mb-2">Топик</h3>
+    <!-- Размер -->
   <p class="text-gray-400 text-sm mb-2">Размер:</p>
   <select id="size-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
     <option value="S">S</option>
     <option value="M">M</option>
     <option value="L">L</option>
   </select>
-
-  <!-- Цвет -->
-  <p class="text-gray-400 text-sm mb-2">Цвет:</p>
-  <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-    <option value="Чёрный">Чёрный</option>
-    <option value="Красный">Красный</option>
-    <option value="Белый">Белый</option>
-  </select>
-
-  <p class="text-[#e91e63] text-lg font-bold mb-4">95 000 UZS</p>
-
-  <button
-    onclick="addToCart(
-      'Топик',
-      '95 000 UZS',
-      document.getElementById('size-dress').value,
-      document.getElementById('color-dress').value
-    )"
-    class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
-    В корзину
-  </button>
-</div>
+    <p class="text-gray-400 text-sm mb-2">Цвет:</p>
+    <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
+      <option value="Чёрный">Чёрный</option>
+      <option value="Красный">Красный</option>
+      <option value="Белый">Белый</option>
+      <option value="Сериый">Сериый</option>
+    </select>
+    <p class="text-[#e91e63] text-lg font-bold mb-4">95 000 UZS</p>
+    <button
+      onclick="addToCart(
+        'Топик',
+        '95 000 UZS',
+        document.getElementById('size-dress').value,
+        document.getElementById('color-dress').value
+      )"
+      class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
+      В корзину
+    </button>
+  </div>
 <!-- Товар 4 -->
- <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
-  <!-- Карусель -->
-  <div class="relative">
-    <div class="carousel" data-index="0">
-      <img src="platye.jpg" class="carousel-img rounded-xl mb-4" />
-      <img src="platye2.jpg" class="carousel-img hidden rounded-xl mb-4" />
-      
+  <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
+    <!-- Карусель -->
+    <div class="relative">
+      <div class="carousel" data-index="0">
+        <img src="platye.jpg" class="carousel-img rounded-xl mb-4" />
+        <img src="platye2.jpg" class="carousel-img hidden rounded-xl mb-4" />
+        <img src="platye3.jpg" class="carousel-img hidden rounded-xl mb-4" />
+      </div>
+      <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
+      <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
     </div>
-    <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
-    <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
-  </div>
-
-  <h3 class="text-white text-xl font-semibold mb-2">Платье</h3>
-
-  <!-- Размер -->
+    <h3 class="text-white text-xl font-semibold mb-2">Платье</h3>
+    <!-- Размер -->
   <p class="text-gray-400 text-sm mb-2">Размер:</p>
   <select id="size-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
     <option value="S">S</option>
     <option value="M">M</option>
     <option value="L">L</option>
   </select>
-
-  <!-- Цвет -->
-  <p class="text-gray-400 text-sm mb-2">Цвет:</p>
-  <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-    <option value="Чёрный">Чёрный</option>
-    <option value="Красный">Красный</option>
-    <option value="Белый">Белый</option>
-  </select>
-
-  <p class="text-[#e91e63] text-lg font-bold mb-4">95 000 UZS</p>
-
-  <button
-    onclick="addToCart(
-      'платье',
-      '95 000 UZS',
-      document.getElementById('size-dress').value,
-      document.getElementById('color-dress').value
-    )"
-    class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
-    В корзину
-  </button>
-</div>
-<!-- Товар 5 -->
- <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
-  <!-- Карусель -->
-  <div class="relative">
-    <div class="carousel" data-index="0">
-      <img src="Sportivki.jpg" class="carousel-img rounded-xl mb-4" />
-    </div>
-    <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
-    <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
+    <p class="text-gray-400 text-sm mb-2">Цвет:</p>
+    <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
+      <option value="Чёрный">Чёрный</option>
+      <option value="Красный">Красный</option>
+      <option value="Белый">Белый</option>
+      <option value="Сериый">Сериый</option>
+    </select>
+    <p class="text-[#e91e63] text-lg font-bold mb-4">95 000 UZS</p>
+    <button
+      onclick="addToCart(
+        'Платье',
+        '95 000 UZS',
+        document.getElementById('size-dress').value,
+        document.getElementById('color-dress').value
+      )"
+      class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
+      В корзину
+    </button>
   </div>
-
-  <h3 class="text-white text-xl font-semibold mb-2">Спортивки</h3>
-
-  <!-- Размер -->
+<!-- Товар 4 -->
+  <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
+    <!-- Карусель -->
+    <div class="relative">
+      <div class="carousel" data-index="0">
+        <img src="Sportivki.jpg" class="carousel-img rounded-xl mb-4" />
+      </div>
+      <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
+      <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
+    </div>
+    <h3 class="text-white text-xl font-semibold mb-2">Спортивки</h3>
+    <p class="text-gray-400 text-sm mb-2">Цвет:</p>
+    <!-- Размер -->
   <p class="text-gray-400 text-sm mb-2">Размер:</p>
   <select id="size-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
     <option value="S">S</option>
     <option value="M">M</option>
     <option value="L">L</option>
   </select>
-
-  <!-- Цвет -->
-  <p class="text-gray-400 text-sm mb-2">Цвет:</p>
-  <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-    <option value="Чёрный">Чёрный</option>
-    <option value="Красный">Красный</option>
-    <option value="Белый">Белый</option>
-  </select>
-
-  <p class="text-[#e91e63] text-lg font-bold mb-4">110 000 UZS</p>
-
-  <button
-    onclick="addToCart(
-      'Спортивка',
-      '110 000 UZS',
-      document.getElementById('size-dress').value,
-      document.getElementById('color-dress').value
-    )"
-    class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
-    В корзину
-  </button>
-</div>
+    <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
+      <option value="Чёрный">Чёрный</option>
+      <option value="Красный">Красный</option>
+      <option value="Белый">Белый</option>
+      <option value="Сериый">Сериый</option>
+    </select>
+    <p class="text-[#e91e63] text-lg font-bold mb-4">95 000 UZS</p>
+    <button
+      onclick="addToCart(
+        'Спортивки',
+        '95 000 UZS',
+        document.getElementById('size-dress').value,
+        document.getElementById('color-dress').value
+      )"
+      class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
+      В корзину
+    </button>
+  </div>
  <!-- Товар 6 -->
  <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
   <!-- Карусель -->
   <div class="relative">
     <div class="carousel" data-index="0">
       <img src="Shalvur.jpg" class="carousel-img rounded-xl mb-4" />
-      <img src=".jpg" class="carousel-img hidden rounded-xl mb-4" />
-      <img src=".jpg" class="carousel-img hidden rounded-xl mb-4" />
     </div>
     <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
     <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
@@ -344,16 +320,55 @@
   </button>
 </div>
 
- <!-- Товар 7 -->
+ <!-- Товар 8 -->
+ <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
+  <!-- Карусель -->
+  <div class="relative">
+    <div class="carousel" data-index="0">
+      <img src="Brelok.jpg" class="carousel-img rounded-xl mb-4" />
+      <img src="Brelok4.jpg" class="carousel-img rounded-xl mb-4" />
+      <img src="Brelok2.jpg" class="carousel-img rounded-xl mb-4" />
+      <img src="Brelok3.jpg" class="carousel-img rounded-xl mb-4" />
+    </div>
+    <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
+    <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
+  </div>
+
+  <h3 class="text-white text-xl font-semibold mb-2">Брелочки</h3>
+
+  <!-- Размер -->
+  <p class="text-gray-400 text-sm mb-2">Тип</p>
+  <select id="size-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
+    <option value="Овечка">Овечка</option>
+    <option value="Лиса">Лиса</option>
+    <option value="Цветочек">Цветочек</option>
+    <option value="Кролик">Кролик</option>
+  </select>
+
+
+  <p class="text-[#e91e63] text-lg font-bold mb-4">40 000 UZS</p>
+
+  <button
+    onclick="addToCart(
+      'Брелочек',
+      '40 000 UZS',
+      document.getElementById('size-dress').value,
+      document.getElementById('color-dress').value
+    )"
+    class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
+    В корзину
+  </button>
+</div>
+
+   <!-- Товар 7 -->
  <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
   <!-- Карусель -->
   <div class="relative">
     <div class="carousel" data-index="0">
       <img src="Mayka1.jpg" class="carousel-img rounded-xl mb-4" />
-      <img src="Mayka2.jpg" class="carousel-img hidden rounded-xl mb-4" />
-      <img src="Mayka3.jpg" class="carousel-img hidden rounded-xl mb-4" />
-      <img src="Mayka4.jpg" class="carousel-img hidden rounded-xl mb-4" />
-      <img src="Mayka5.jpg" class="carousel-img hidden rounded-xl mb-4" />
+      <img src="Mayka2.jpg" class="carousel-img rounded-xl mb-4" />
+      <img src="Mayka4.jpg" class="carousel-img rounded-xl mb-4" />
+      <img src="Mayka3.jpg" class="carousel-img rounded-xl mb-4" />
     </div>
     <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
     <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
@@ -381,7 +396,7 @@
 
   <button
     onclick="addToCart(
-      'Майки',
+      'Майка',
       '95 000 UZS',
       document.getElementById('size-dress').value,
       document.getElementById('color-dress').value
@@ -390,123 +405,146 @@
     В корзину
   </button>
 </div>
-<!-- Контейнер карточек -->
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-  <!-- Товар 8: Брелочки -->
-  <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
-    <div class="relative">
-      <div class="carousel" data-index="0">
-        <img src="Brelok.jpg" class="carousel-img rounded-xl mb-4" />
-        <img src="Brelok2.jpg" class="carousel-img hidden rounded-xl mb-4" />
-        <img src="Brelok3.jpg" class="carousel-img hidden rounded-xl mb-4" />
-        <img src="Brelok4.jpg" class="carousel-img hidden rounded-xl mb-4" />
-      </div>
-      <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
-      <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
+  <!-- Товар 9 -->
+ <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
+  <!-- Карусель -->
+  <div class="relative">
+    <div class="carousel" data-index="0">
+      <img src="yubka1.jpg" class="carousel-img rounded-xl mb-4" />
+      <img src="yubka.jpg" class="carousel-img rounded-xl mb-4" />
+      <img src="yubka2.jpg" class="carousel-img rounded-xl mb-4" />
     </div>
-    <h3 class="text-white text-xl font-semibold mb-2">Брелочки</h3>
-    <p class="text-gray-400 text-sm mb-2">Зверёк:</p>
-    <select class="size-select w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-      <option value="Fox">Лиса</option>
-      <option value="Lotos">Лотос</option>
-      <option value="Rabbit">Заяц</option>
-      <option value="Sheep">Овечка</option>
-    </select>
-    <p class="text-gray-400 text-sm mb-2">Цвет:</p>
-    <select class="color-select w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-      <option value="Чёрный">Чёрный</option>
-      <option value="Красный">Красный</option>
-      <option value="Белый">Белый</option>
-    </select>
-    <p class="text-[#e91e63] text-lg font-bold mb-4">40 000 UZS</p>
-    <button onclick="addToCart('Брелочки', '40 000 UZS', this.closest('div').querySelector('.size-select').value, this.closest('div').querySelector('.color-select').value)" class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">В корзину</button>
+    <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
+    <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
   </div>
 
-  <!-- Товар 9: Юбочки -->
-  <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
-    <div class="relative">
-      <div class="carousel" data-index="0">
-        <img src="yubka.jpg" class="carousel-img rounded-xl mb-4" />
-        <img src="yubka1.jpg" class="carousel-img hidden rounded-xl mb-4" />
-        <img src="yubka2.jpg" class="carousel-img hidden rounded-xl mb-4" />
-      </div>
-      <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
-      <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
+  <h3 class="text-white text-xl font-semibold mb-2">Юбочки</h3>
+
+  <!-- Размер -->
+  <p class="text-gray-400 text-sm mb-2">Размер:</p>
+  <select id="size-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+  </select>
+
+  <!-- Цвет -->
+  <p class="text-gray-400 text-sm mb-2">Цвет:</p>
+  <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
+    <option value="Чёрный">Чёрный</option>
+    <option value="Красный">Красный</option>
+    <option value="Белый">Белый</option>
+  </select>
+
+  <p class="text-[#e91e63] text-lg font-bold mb-4">110 000 UZS</p>
+
+  <button
+    onclick="addToCart(
+      'Юбочки',
+      '95 000 UZS',
+      document.getElementById('size-dress').value,
+      document.getElementById('color-dress').value
+    )"
+    class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
+    В корзину
+  </button>
+</div>
+  <!-- Товар 10 -->
+ <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
+  <!-- Карусель -->
+  <div class="relative">
+    <div class="carousel" data-index="0">
+      <img src="D yubka.jpg" class="carousel-img rounded-xl mb-4" />
+      <img src="D yubka1.jpg" class="carousel-img rounded-xl mb-4" />
     </div>
-    <h3 class="text-white text-xl font-semibold mb-2">Юбочки</h3>
-    <p class="text-gray-400 text-sm mb-2">Размер:</p>
-    <select class="size-select w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-      <option value="S">S</option>
-      <option value="M">M</option>
-      <option value="L">L</option>
-    </select>
-    <p class="text-gray-400 text-sm mb-2">Цвет:</p>
-    <select class="color-select w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-      <option value="Чёрный">Чёрный</option>
-      <option value="Красный">Красный</option>
-      <option value="Белый">Белый</option>
-    </select>
-    <p class="text-[#e91e63] text-lg font-bold mb-4">110 000 UZS</p>
-    <button onclick="addToCart('Юбочки', '110 000 UZS', this.closest('div').querySelector('.size-select').value, this.closest('div').querySelector('.color-select').value)" class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">В корзину</button>
+    <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
+    <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
   </div>
 
-  <!-- Товар 10: Длинная Юбка -->
-  <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
-    <div class="relative">
-      <div class="carousel" data-index="0">
-        <img src="D yubka1.jpg" class="carousel-img rounded-xl mb-4" />
-        <img src="D yubka.jpg" class="carousel-img hidden rounded-xl mb-4" />
-      </div>
-      <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
-      <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
+  <h3 class="text-white text-xl font-semibold mb-2">Длинная Юбка</h3>
+
+  <!-- Размер -->
+  <p class="text-gray-400 text-sm mb-2">Размер:</p>
+  <select id="size-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+  </select>
+
+  <!-- Цвет -->
+  <p class="text-gray-400 text-sm mb-2">Цвет:</p>
+  <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
+    <option value="Чёрный">Чёрный</option>
+    <option value="Красный">Красный</option>
+    <option value="Белый">Белый</option>
+  </select>
+
+  <p class="text-[#e91e63] text-lg font-bold mb-4">110 000 UZS</p>
+
+  <button
+    onclick="addToCart(
+      'Длинная Юбка',
+      '110 000 UZS',
+      document.getElementById('size-dress').value,
+      document.getElementById('color-dress').value
+    )"
+    class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
+    В корзину
+  </button>
+</div>
+
+  <!-- Товар 10 -->
+ <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
+  <!-- Карусель -->
+  <div class="relative">
+    <div class="carousel" data-index="0">
+      <img src="Krossovki.jpg" class="carousel-img rounded-xl mb-4" />
     </div>
-    <h3 class="text-white text-xl font-semibold mb-2">Длинная Юбка</h3>
-    <p class="text-gray-400 text-sm mb-2">Размер:</p>
-    <select class="size-select w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-      <option value="S">S</option>
-      <option value="M">M</option>
-      <option value="L">L</option>
-    </select>
-    <p class="text-gray-400 text-sm mb-2">Цвет:</p>
-    <select class="color-select w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-      <option value="Чёрный">Чёрный</option>
-      <option value="Красный">Красный</option>
-      <option value="Белый">Белый</option>
-    </select>
-    <p class="text-[#e91e63] text-lg font-bold mb-4">110 000 UZS</p>
-    <button onclick="addToCart('Длинная Юбка', '110 000 UZS', this.closest('div').querySelector('.size-select').value, this.closest('div').querySelector('.color-select').value)" class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">В корзину</button>
+    <button class="prev-btn absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
+    <button class="next-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
   </div>
 
-  <!-- Товар 11: Кроссы -->
-  <div class="bg-[#1a1a1a] p-4 rounded-2xl shadow-lg">
-    <div class="relative">
-      <div class="carousel" data-index="0">
-        <img src="Krossovki.jpg" class="carousel-img rounded-xl mb-4" />
-      </div>
-      <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">‹</button>
-      <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 bg-gray-700 text-white px-2 py-1 rounded-full">›</button>
-    </div>
-    <h3 class="text-white text-xl font-semibold mb-2">Кроссы</h3>
-    <p class="text-gray-400 text-sm mb-2">Размер:</p>
-    <select class="size-select w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-      <option value="S">S</option>
-      <option value="M">M</option>
-      <option value="L">L</option>
-    </select>
-    <p class="text-gray-400 text-sm mb-2">Цвет:</p>
-    <select class="color-select w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
-      <option value="Чёрный">Чёрный</option>
-      <option value="Красный">Красный</option>
-      <option value="Белый">Белый</option>
-    </
+  <h3 class="text-white text-xl font-semibold mb-2">Кроссы</h3>
+
+  <!-- Размер -->
+  <p class="text-gray-400 text-sm mb-2">Размер:</p>
+  <select id="size-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+  </select>
+
+  <!-- Цвет -->
+  <p class="text-gray-400 text-sm mb-2">Цвет:</p>
+  <select id="color-dress" class="w-full bg-gray-800 text-white rounded-xl mb-4 p-2">
+    <option value="Чёрный">Чёрный</option>
+    <option value="Красный">Красный</option>
+    <option value="Белый">Белый</option>
+  </select>
+
+  <p class="text-[#e91e63] text-lg font-bold mb-4">125 000 UZS</p>
+
+  <button
+    onclick="addToCart(
+      'Кроссы',
+      '125 000 UZS',
+      document.getElementById('size-dress').value,
+      document.getElementById('color-dress').value
+    )"
+    class="bg-[#e91e63] hover:bg-[#c2185b] w-full py-2 rounded-xl font-bold">
+    В корзину
+  </button>
+</div>
+</div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
+
 
   <!-- Footer -->
-  <footer class="bg-[#1a1a1a] text-center py-6 mt-12 border-t border-gray-700">
+   <footer class="bg-[#1a1a1a] text-center py-6 border-t border-gray-700">
     <p class="text-sm text-gray-400 mb-4">© 2025 Redlotus.uz. Все права защищены.</p>
     <div class="flex justify-center space-x-6">
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" class="w-6 h-6" alt="Telegram"></a>
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" class="w-6 h-6" alt="Instagram"></a>
+      <a href="https://t.me/redlotusuz"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" class="w-6 h-6" alt="Telegram"></a>
+      <a href="https://www.instagram.com/redlotus.uz?igsh=bzZjdnhxanlmZzBi&utm_source=qr"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" class="w-6 h-6" alt="Instagram"></a>
       <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-6 h-6" alt="TikTok"></a>
     </div>
   </footer>
@@ -608,3 +646,4 @@
 
 </body>
 </html>
+
